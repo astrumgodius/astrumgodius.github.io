@@ -12,9 +12,12 @@ vid.playbackRate = "2"
 vid.style.width = "100%"
 vid.style.height = "100%"
 vid.style.objectFit = "fill"
-vid.oncanplaythrough = function(){
-    document.body.append(vid)
-    vid.play()
+vid.onloadeddata = function(){
+    if (vid.readyState >= 3){
+        document.body.append(vid)
+        vid.play()
+    }
+    
 }
 vid.addEventListener('ended',(e)=>{
     console.log('ended')
